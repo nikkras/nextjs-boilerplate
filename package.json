@@ -1,13 +1,18 @@
 {
-  "name": "jam3-dev",
-  "version": "2.0.5",
+  "name": "nextjs-boilerplate",
+  "version": "1.0.1",
+  "description": "Boilerplate for React, Static and Server Side Rendered projects with NextJS",
   "private": true,
-  "bugs": {
-    "url": "https://github.com/Jam3/nextjs-boilerplate/issues"
-  },
+  "keywords": [
+    "nextjs",
+    "locomotive scroll",
+    "framer motion",
+    "react",
+    "typescript"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jam3/nextjs-boilerplate.git"
+    "url": "git+https://github.com/nikkras/nextjs-boilerplate.git"
   },
   "license": "MIT",
   "scripts": {
