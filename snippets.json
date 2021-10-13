@@ -1,0 +1,22 @@
+{
+  "css": {
+    "snippets": {
+      "mqxsmall":"@include media('>=xsmall') {}", 
+      "mqsmall":"@include media('>=small') {}", 
+      "mqmsmall":"@include media('>=msmall') {}", 
+      "mqmedium":"@include media('>=medium') {}", 
+      "mqlarge":"@include media('>=large') {}", 
+      "mqslarge":"@include media('>=slarge') {}", 
+      "mqmlarge":"@include media('>=mlarge') {}",  
+      "mqhd":"@include media('>=hd') {}",  
+      "mqfullhd":"@include media('>=fullhd') {}",
+      "mqxlarge":"@include media('>=xlarge') {}",
+      "px":"pxrem()"
+    }
+  },
+  "jsx": {
+    "snippets": {
+      "jsxstyled":"<style jsx></style>"
+    }
+  }
+}

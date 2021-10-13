@@ -1,0 +1,52 @@
+$base-path: '../../assets/fonts/' !default;
+
+@font-face {
+  font-family: 'Farmhouse';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('#{$base-path}Farmhouse/FarmhouseRegular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Bodoni Moda';
+  src: url('#{$base-path}Bodoni/bodoni-moda-latin-variable-wghtOnly-normal.woff2') format('woff2 supports variations'),
+    url('#{$base-path}Bodoni/bodoni-moda-latin-variable-wghtOnly-normal.woff2') format('woff2-variations');
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bodoni Moda';
+  src: url('#{$base-path}Bodoni/bodoni-moda-latin-variable-wghtOnly-italic.woff2') format('woff2 supports variations'),
+    url('#{$base-path}Bodoni/bodoni-moda-latin-variable-wghtOnly-italic.woff2') format('woff2-variations');
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('#{$base-path}Barlow/barlow-condensed-latin-400-normal.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('#{$base-path}Barlow/barlow-condensed-latin-700-normal.woff') format('woff');
+}
+
+// @font-face {
+//   font-family: 'Barlow';
+//   font-style: italic;
+//   font-weight: 400;
+//   font-display: swap;
+//   src: url('#{$base-path}Barlow/barlow-condensed-latin-400-italic.woff') format('woff');
+// }

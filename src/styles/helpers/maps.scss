@@ -1,0 +1,36 @@
+$layout-map: (
+  xsmall: 360,
+  small: 375,
+  msmall: 400,
+  medium: 760,
+  large: 1024,
+  slarge: 1280,
+  mlarge: 1440,
+  hd: 1680,
+  fullhd: 1920,
+  xlarge: 2200,
+  breakpoint-xsmall: 360px,
+  breakpoint-small: 375px,
+  breakpoint-msmall: 400px,
+  breakpoint-medium: 760px,
+  breakpoint-large: 1024px,
+  breakpoint-slarge: 1282px,
+  breakpoint-mlarge: 1445px,
+  breakpoint-hd: 1675px,
+  breakpoint-fullhd: 1915px,
+  breakpoint-xlarge: 2200px,
+  max-width-large: 1400px
+);
+
+$breakpoints: (
+  xsmall: map-get($layout-map, breakpoint-xsmall),
+  small: map-get($layout-map, breakpoint-small),
+  msmall: map-get($layout-map, breakpoint-msmall),
+  medium: map-get($layout-map, breakpoint-medium),
+  large: map-get($layout-map, breakpoint-large),
+  slarge: map-get($layout-map, breakpoint-slarge),
+  mlarge: map-get($layout-map, breakpoint-mlarge),
+  hd: map-get($layout-map, breakpoint-hd),
+  fullhd: map-get($layout-map, breakpoint-fullhd),
+  xlarge: map-get($layout-map, breakpoint-xlarge)
+);

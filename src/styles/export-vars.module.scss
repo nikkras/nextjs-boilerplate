@@ -1,0 +1,17 @@
+/* stylelint-disable */
+@import 'shared';
+
+:export {
+  white: $white;
+  black: $black;
+  xsmall: map-get($layout-map, breakpoint-xsmall);
+  small: map-get($layout-map, breakpoint-small);
+  msmall: map-get($layout-map, breakpoint-msmall);
+  medium: map-get($layout-map, breakpoint-medium);
+  large: map-get($layout-map, breakpoint-large);
+  slarge: map-get($layout-map, breakpoint-slarge);
+  mlarge: map-get($layout-map, breakpoint-mlarge);
+  hd: map-get($layout-map, breakpoint-hd);
+  fullhd: map-get($layout-map, breakpoint-fullhd);
+  xlarge: map-get($layout-map, breakpoint-xlarge);
+}

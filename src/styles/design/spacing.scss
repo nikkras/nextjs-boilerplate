@@ -1,0 +1,37 @@
+:root {
+  --space-unit: 1.25em;
+  --space-xxxxs: calc(0.125 * var(--space-unit));
+  --space-xxxs: calc(0.25 * var(--space-unit));
+  --space-xxs: calc(0.375 * var(--space-unit));
+  --space-xs: calc(0.5 * var(--space-unit));
+  --space-sm: calc(0.75 * var(--space-unit));
+  --space-md: calc(1.25 * var(--space-unit));
+  --space-lg: calc(2 * var(--space-unit));
+  --space-xl: calc(3.25 * var(--space-unit));
+  --space-xxl: calc(5.25 * var(--space-unit));
+  --space-xxxl: calc(8.5 * var(--space-unit));
+  --space-xxxxl: calc(13.75 * var(--space-unit));
+  --component-padding: var(--space-sm);
+
+  @include media('>=medium') {
+    --component-padding: var(--space-lg);
+  }
+
+  @include media('>=large') {
+    --space-unit: 1.5em;
+    --component-padding: calc(var(--space-xl));
+  }
+  @include media('>=slarge') {
+    --component-padding: calc(var(--space-xl) * 1.1);
+  }
+}
+
+.container {
+  width: calc(100% - 2 * var(--component-padding));
+  margin-left: auto;
+  margin-right: auto;
+  max-width: pxrem(1400);
+  @include media('>=fullhd') {
+    max-width: pxrem(1500);
+  }
+}

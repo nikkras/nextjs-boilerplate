@@ -1,0 +1,240 @@
+:root {
+  --btn-font-size: 0.65em;
+  --btn-sm: calc(var(--btn-font-size) + 0.05em);
+  --btn-md: calc(var(--btn-font-size) + 0.08em);
+  --btn-lg: calc(var(--btn-font-size) + 0.1em);
+  // @include media('>=small') {
+  //   --btn-font-size: 1em;
+  // }
+  // @include media('>=msmall') {
+  //   --btn-font-size: 1.05em;
+  // }
+  // @include media('>=medium') {
+  //   --btn-font-size: 1.1em;
+  // }
+  // @include media('>=large') {
+  //   --btn-font-size: 1.1em;
+  // }
+  // @include media('>=mlarge') {
+  //   --btn-font-size: 1.2em;
+  // }
+  // @include media('>=fullhd') {
+  //   --btn-font-size: 1.3em;
+  // }
+}
+
+button,
+input[type='reset'],
+input[type='submit'],
+input[type='button'] {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  overflow: visible;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--font-primary);
+  width: auto;
+  -webkit-appearance: none;
+  background-clip: padding-box;
+  border-radius: 0;
+  box-sizing: border-box;
+  line-height: normal !important;
+  font-weight: bold;
+  &:active,
+  &:focus {
+    text-decoration: none;
+  } // active
+} // button
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  white-space: nowrap;
+  text-decoration: none;
+  line-height: 100%;
+  font-weight: 500;
+  border-radius: px(20);
+  padding: px(6) px(10);
+  margin: px(5) 0;
+  background-color: $white;
+  transition: background-color 0.3s ease;
+  @include media('>=small') {
+    padding: px(6) px(12);
+  }
+  @include media('>=msmall') {
+    padding: px(7) px(14);
+  }
+  @include media('>=medium') {
+    padding: px(7) px(17);
+  }
+  @include media('>=large') {
+    margin: px(8) 0;
+    padding: px(8) px(22);
+  }
+  @include media('>=mlarge') {
+    border-radius: px(25);
+    padding: px(9) px(24);
+  }
+  @include media('>=fullhd') {
+    border-radius: px(30);
+    padding: px(10) px(28);
+  }
+  span {
+    position: relative;
+    @include clean;
+    line-height: 100%;
+    color: $black;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    transition: letter-spacing 0.3s ease;
+    font-family: var(--font-secondary);
+    font-size: var(--btn-font-size);
+    @include media('>=small') {
+      font-size: var(--btn-sm);
+    }
+    @include media('>=medium') {
+      font-size: var(--btn-md);
+    }
+    @include media('>=large') {
+      font-size: var(--btn-lg);
+    }
+  }
+  svg {
+    position: relative;
+    display: inline-block;
+    margin-left: px(4);
+    width: px(10);
+    height: px(10);
+    transition: transform 0.3s $ease-out-quad;
+    @include media('>=small') {
+      width: px(12);
+      height: px(12);
+    }
+    @include media('>=medium') {
+      width: px(13);
+      height: px(13);
+    }
+    @include media('>=slarge') {
+      width: px(15);
+      height: px(15);
+    }
+    path {
+      fill: $black;
+    }
+  }
+  &:active,
+  &:hover {
+    text-decoration: none;
+  }
+  &:hover {
+    @include media('>=large') {
+      span {
+        letter-spacing: 0.1em;
+      }
+      svg {
+        transform: translateX(px(2));
+      }
+    }
+  }
+  &--icon {
+    span {
+      @include media('>=msmall') {
+        top: px(2);
+      }
+    }
+  }
+  &--red {
+    background-color: $red;
+    &:hover {
+      @include media('>=large') {
+        background-color: lighten($red, 5%);
+      }
+    }
+    span {
+      color: $white;
+    }
+    svg {
+      path {
+        fill: $white;
+      }
+    }
+  }
+  &--ghost-light {
+    background-color: transparent;
+    border: 1px solid $white;
+    span {
+      color: $white;
+    }
+    svg {
+      path {
+        fill: $white;
+      }
+    }
+  }
+  &--ghost-dark {
+    background-color: transparent;
+    border: 1px solid $black;
+    span {
+      color: $black;
+    }
+    svg {
+      path {
+        fill: $black;
+      }
+    }
+  }
+  &--small {
+    background-color: transparent;
+    @include clean;
+    font-size: calc(var(--btn-font-size) * 0.8);
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    span {
+      position: relative;
+      top: 0;
+      @include clean;
+      line-height: 100%;
+      letter-spacing: 0;
+    }
+    svg {
+      width: px(6);
+      height: px(6);
+      // @include media('>=small') {
+      //   width: px(12);
+      //   height: px(12);
+      // }
+      // @include media('>=medium') {
+      //   width: px(13);
+      //   height: px(13);
+      // }
+      @include media('>=large') {
+        width: px(10);
+        height: px(10);
+      }
+    }
+    &:hover {
+      @include media('>=large') {
+        span {
+          letter-spacing: 0;
+        }
+      }
+    }
+  }
+  &--inverse {
+    span {
+      color: $white;
+    }
+    svg {
+      path {
+        fill: $white;
+      }
+    }
+  }
+}

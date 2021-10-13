@@ -1,0 +1,147 @@
+@import 'shared';
+
+.Cursor {
+  opacity: 0;
+  position: fixed;
+  width: px(19);
+  height: px(19);
+  pointer-events: none;
+  z-index: 9999;
+  // left: -100px;
+  // top: -100px;
+  transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.4s ease;
+  display: none;
+  @include media('>=large') {
+    display: block;
+  }
+  .defaultCursor {
+    display: block;
+    position: absolute;
+    @include fill;
+    top: -50%;
+    left: -50%;
+    // transform: translate(-50%, -50%);
+    border-radius: 100%;
+    transform-origin: center center;
+    border: 3px solid rgba($red, 0.8);
+    background-color: transparent;
+    // background-color: rgba($red, 0.37);
+    transition: width 0.3s ease-out, height 0.3s ease-out, background-color 0.15s ease;
+  }
+  svg {
+    display: block;
+    position: absolute;
+    width: px(70);
+    height: px(70);
+    transition: opacity 0.6s ease 0.5s;
+    transform: translate(-50%, -50%);
+    path {
+      fill: $red;
+    }
+  }
+}
+
+.CursorHidden {
+  opacity: 0 !important;
+  transition: opacity 0s;
+}
+.CursorLocked {
+  width: px(28);
+  height: px(28);
+  .defaultCursor {
+    background-color: transparent;
+    border: 3px solid rgba(lighten($red, 5%), 0.8);
+  }
+}
+// .CursorPointer {
+//   width: px(16);
+//   height: px(16);
+//   .defaultCursor {
+//     border: 0;
+//     background-color: rgba($red, 0.13);
+//     // filter: blur(12px);
+//   }
+// }
+.CursorSlides {
+  width: 40px;
+  height: 40px;
+  .defaultCursor {
+    border: 0;
+    background-color: rgba($red, 0.7);
+    transform-origin: center;
+  }
+}
+.ArrowRight {
+  width: 50px;
+  height: 50px;
+  .defaultCursor {
+    display: none;
+  }
+}
+.ArrowLeft {
+  width: 50px;
+  height: 50px;
+  .defaultCursor {
+    display: none;
+  }
+}
+
+.Play {
+  .defaultCursor {
+    display: none;
+  }
+  svg {
+    width: px(50);
+    height: px(50);
+  }
+}
+.Intro {
+  width: px(54);
+  height: px(54);
+  .defaultCursor {
+    border-radius: 100%;
+    transform-origin: center center;
+    background-color: $red;
+  }
+  .introText {
+    display: block;
+    position: absolute;
+    text-align: center;
+    @include fill;
+    top: -5%;
+    left: -50%;
+    text-transform: uppercase;
+    color: $white;
+    font-weight: 500;
+    font-size: var(--text-xs);
+    letter-spacing: 0.07em;
+  }
+}
+
+.Zoom {
+  .defaultCursor {
+    display: none;
+  }
+  transform: rotate(-12deg);
+
+  svg {
+    width: px(34);
+    height: px(34);
+  }
+}
+.CursorSpinner {
+  .defaultCursor {
+    display: none;
+  }
+  .spinnerContainer {
+    animation: icon-spin 1s infinite linear;
+    transform-origin: top left;
+    display: block;
+    width: pxrem(34);
+    height: pxrem(34);
+
+    svg {
+      @include fill;
+    }
+  }
+}
