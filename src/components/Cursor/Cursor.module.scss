@@ -3,8 +3,8 @@
 .Cursor {
   opacity: 0;
   position: fixed;
-  width: px(19);
-  height: px(19);
+  width: px(8);
+  height: px(8);
   pointer-events: none;
   z-index: 9999;
   // left: -100px;
@@ -23,9 +23,9 @@
     // transform: translate(-50%, -50%);
     border-radius: 100%;
     transform-origin: center center;
-    border: 3px solid rgba($red, 0.8);
+    // border: 1px solid rgba($red, 0.8);
     background-color: transparent;
-    // background-color: rgba($red, 0.37);
+    background-color: $red;
     transition: width 0.3s ease-out, height 0.3s ease-out, background-color 0.15s ease;
   }
   svg {

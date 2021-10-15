@@ -43,29 +43,31 @@ export default function CustomCursor() {
   const cursorSpinner = useAppSelector((state) => state.cursorSpinner);
   const cursorState = useAppSelector((state) => state.cursorState);
   const cursorLocked = useAppSelector((state) => state.cursorLocked);
-  const [cursorHidden, setCursorHidden] = useState(false);
+  const [cursorHidden, setCursorHidden] = useState(true);
   const requestRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (cursorEl && cursorEl.current) {
       gsap.set(cursorEl.current, { opacity: 0 });
-
       document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseover', onMouseEnter);
       document.addEventListener('mouseout', onMouseLeave);
-
-      requestRef.current = requestAnimationFrame(animate);
-
-      gsap.to(cursorEl.current, 0.3, { autoAlpha: 1, delay: 0.5 });
     }
-
     return () => {
       document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseover', onMouseEnter);
       document.removeEventListener('mouseout', onMouseLeave);
       cancelAnimationFrame(requestRef.current as number);
     };
   }, []);
+
+  useEffect(() => {
+    if (!cursorHidden) {
+      gsap.to(cursorEl.current, 0.3, { autoAlpha: 1, delay: 0.5 });
+      requestRef.current = requestAnimationFrame(animate);
+    } else {
+      gsap.set(cursorEl.current, { opacity: 0 });
+      cancelAnimationFrame(requestRef.current as number);
+    }
+  }, [cursorHidden]);
 
   useEffect(() => {
     cursorObj.state = cursorState;
@@ -76,16 +78,18 @@ export default function CustomCursor() {
     const { clientX, clientY } = event;
     mousePos.x = clientX;
     mousePos.y = clientY;
+    if (!cursorObj.visible) {
+      cursorObj.visible = true;
+      setCursorHidden(false);
+    }
   };
 
-  const onMouseEnter = () => {
-    cursorObj.visible = true;
-    setCursorHidden(false);
-  };
-
-  const onMouseLeave = () => {
-    cursorObj.visible = false;
-    setCursorHidden(true);
+  const onMouseLeave = (event: { clientX: number; clientY: number }) => {
+    const { clientX, clientY } = event;
+    if (clientY <= 0 || clientX <= 0 || clientX >= window.innerWidth || clientY >= window.innerHeight) {
+      cursorObj.visible = false;
+      setCursorHidden(true);
+    }
   };
 
   const animate = () => {
@@ -105,27 +109,20 @@ export default function CustomCursor() {
       let dx: number = targetX - cursorBounds.x;
       let dy: number = targetY - cursorBounds.y;
 
-      x += dx * 0.45;
-      y += dy * 0.45;
+      x += dx * 0.15;
+      y += dy * 0.15;
 
       cursorEl.current.style.left = `${x}px`;
       cursorEl.current.style.top = `${y}px`;
 
-      // if (dist < 5) {
       let angle = Math.atan2(dy, dx);
       let dist = Math.sqrt(dx * dx + dy * dy) / 60;
 
-      // cursorEl.current.style.opacity = '1';
       gsap.set(cursorCircle.current, {
         scaleX: 1 + dist,
         scaleY: 1 - dist / 4,
-        // x: '-50%',
-        // y: '-50%',
         rotation: (180 * angle) / Math.PI
       });
-      // } else {
-      //   cursorEl.current.style.opacity = '0';
-      // }
     }
   };
 

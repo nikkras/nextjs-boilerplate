@@ -1,7 +1,7 @@
 import { memo, useState, useEffect } from 'react';
 import { m } from 'framer-motion';
 import classnames from 'classnames';
-import Image from '@/components/Image/Image';
+import Image from '@/components/Image/DefaultImage';
 import getLayout from '@/utils/layout';
 import Head from '@/components/Head/Head';
 
@@ -64,7 +64,8 @@ function Landing({ className }: Props) {
           .image {
             text-align: center;
             padding: 10vw;
-            img {
+            :global(img) {
+              width: 100%;
               display: inline-block;
             }
           }

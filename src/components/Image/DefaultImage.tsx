@@ -1,7 +1,5 @@
 import { memo, forwardRef, useMemo, ForwardedRef } from 'react';
-import classnames from 'classnames';
 
-import styles from './Image.module.scss';
 import sassVars from '@/styles/export-vars.module.scss';
 
 import { Breakpoints } from '@/utils/layout';
@@ -57,7 +55,7 @@ const Image = (
 
   return (
     <img
-      className={classnames(styles.Image, className)}
+      className={className}
       ref={ref}
       srcSet={srcSet}
       src={src}
