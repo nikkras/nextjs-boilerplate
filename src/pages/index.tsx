@@ -9,7 +9,7 @@ type Props = {
   className: string;
 };
 
-function Landing({ className }: Props) {
+function Home({ className }: Props) {
   const [large, setLarge] = useState(false);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function Landing({ className }: Props) {
 
   return (
     <m.main
-      className={classnames('Landing', className)}
+      className={classnames('Home', className)}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.3 } }}
       exit={{ opacity: 0, transition: { duration: 0.3 } }}
@@ -32,7 +32,7 @@ function Landing({ className }: Props) {
         <h2 className="description">extended from jam3.</h2>
         {typeof window !== 'undefined' && large ? (
           <div className="image">
-            <Image imageObj={{ file: 'test.jpg', alt: 'test' }} />
+            <Image src='test.jpg' alt='test' />
           </div>
         ) : null}
       </section>
@@ -75,4 +75,4 @@ function Landing({ className }: Props) {
   );
 }
 
-export default memo(Landing);
+export default memo(Home);

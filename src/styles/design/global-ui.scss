@@ -17,8 +17,8 @@
   svg {
     animation: icon-spin 1s infinite linear;
     transform-origin: center center;
-    width: pxrem(50);
-    height: pxrem(50);
+    width: px(50);
+    height: px(50);
     path {
       fill: $red;
     }
@@ -201,46 +201,46 @@ html.has-scroll-dragging {
   text-align: center;
   @include flex-center;
   flex-direction: column;
-  padding: 0 pxrem(20);
+  padding: 0 px(20);
   bottom: 3vw !important;
   left: 3vw;
-  width: pxrem(140);
-  height: pxrem(120);
+  width: px(140);
+  height: px(120);
   box-shadow: 0 0 px(10) rgba($black, 0.3);
   @include z-index(cookie);
   @include media('>=msmall') {
-    width: pxrem(160);
-    height: pxrem(130);
+    width: px(160);
+    height: px(130);
   }
   @include media('>=medium') {
-    padding: 0 pxrem(25);
-    width: pxrem(240);
-    height: pxrem(120);
+    padding: 0 px(25);
+    width: px(240);
+    height: px(120);
   }
   @include media('>=large') {
-    width: pxrem(280);
-    height: pxrem(140);
+    width: px(280);
+    height: px(140);
   }
   > div {
     font-size: calc(var(--text-sm) * 1.2);
     // @include media('>=large') {
-    //   margin-bottom: pxrem(20);
+    //   margin-bottom: px(20);
     //   font-size: var(--text-sm);
     // }
   }
   button {
     white-space: nowrap;
     @include clean;
-    margin-top: pxrem(10);
+    margin-top: px(10);
     color: $white;
-    padding: pxrem(12) pxrem(20);
+    padding: px(12) px(20);
     background-color: $red;
     border-radius: 30px;
     font-size: calc(var(--text-xs) * 1.1);
     font-weight: 700 !important;
     transition: background-color 0.3s ease;
     @include media('>=large') {
-      padding: pxrem(12) pxrem(30);
+      padding: px(12) px(30);
     }
     &:hover {
       background-color: lighten($red, 3%);
@@ -374,19 +374,19 @@ header.Header--isHidden {
       position: relative;
       @include flex-center;
       flex-direction: column;
-      margin-bottom: pxrem(30);
+      margin-bottom: px(30);
       width: 50%;
       @include media('>=medium') {
-        margin-bottom: pxrem(40);
+        margin-bottom: px(40);
       }
       @include media('>=large') {
-        margin-bottom: pxrem(60);
+        margin-bottom: px(60);
       }
       @include media('>=mlarge') {
-        margin-bottom: pxrem(75);
+        margin-bottom: px(75);
       }
       @include media('>=hd') {
-        margin-bottom: pxrem(89);
+        margin-bottom: px(89);
       }
       img {
         max-width: 90% !important;
@@ -399,7 +399,7 @@ header.Header--isHidden {
         font-weight: 600;
         letter-spacing: 0.04em;
         font-size: var(--text-xxs);
-        margin-top: pxrem(10);
+        margin-top: px(10);
       }
     }
   }
@@ -442,7 +442,7 @@ header.Header--isHidden {
   z-index: 1;
   pointer-events: none;
   opacity: 0;
-  .landing & {
+  .Home & {
     opacity: 1;
   }
 }

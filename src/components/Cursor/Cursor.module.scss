@@ -137,8 +137,8 @@
     animation: icon-spin 1s infinite linear;
     transform-origin: top left;
     display: block;
-    width: pxrem(34);
-    height: pxrem(34);
+    width: px(34);
+    height: px(34);
 
     svg {
       @include fill;

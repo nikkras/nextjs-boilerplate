@@ -4,20 +4,20 @@
     "package-json-properties": [
       "error",
       {
-        "required": ["name", "private", "scripts", "engines", "dependencies", "husky", "browserslist"]
+        "required": ["name", "private", "scripts", "engines", "dependencies", "browserslist"]
       }
     ],
     "root-files": [
       "error",
       {
         "required": [
+          ".husky",
           ".gitignore",
           "commitlint.config.js",
           ".editorconfig",
           ".eslintrc.json",
           ".prettierrc",
           ".stylelintrc",
-          ".babelrc",
           "README.md"
         ],
         "blacklist": []
@@ -32,8 +32,9 @@
     "dependencies/min-vulnerabilities-allow": [
       "error",
       {
+        "production": true,
         "level": "critical",
-        "skip": ["1213", "813", "1573", "1643", "1644"]
+        "skip": ["immer"]
       }
     ],
     "dependencies/outdated-packages": [

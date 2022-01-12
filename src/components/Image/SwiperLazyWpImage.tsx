@@ -14,7 +14,6 @@ export type Props = {
   sourceUrl: string;
   sourceSrcSet?: string;
   alt: string;
-  loadingType?: 'lazy' | 'eager';
   sizes?: Partial<SrcSetSizes>;
 };
 
@@ -26,10 +25,7 @@ const DEFAULT_SIZES: SrcSetSizes = {
   mobile: '320px'
 };
 
-const Image = (
-  { className, sourceUrl, sourceSrcSet, alt, loadingType = 'lazy', sizes = {} }: Props,
-  ref: ForwardedRef<HTMLImageElement>
-) => {
+const Image = ({ sourceUrl, sourceSrcSet, alt, sizes = {} }: Props, ref: ForwardedRef<HTMLImageElement>) => {
   const isWebpSupported = useAppSelector((state) => state.isWebpSupported);
 
   const { src, srcSet } = useMemo(() => {
@@ -46,13 +42,11 @@ const Image = (
   if (srcSet) {
     return (
       <img
-        className={className}
+        className="swiper-lazy"
         ref={ref}
-        srcSet={srcSet}
-        src={src}
+        data-srcset={srcSet}
+        data-src={src}
         alt={alt}
-        decoding="async"
-        loading={loadingType}
         sizes={
           srcSet &&
           `(min-width: ${sassVars.hd}) ${hd}, (min-width: ${sassVars.mlarge}) ${mlarge}, (min-width: ${sassVars.large}) ${large}, (min-width: ${sassVars.medium}) ${tablet}, ${mobile}`
@@ -60,7 +54,7 @@ const Image = (
       />
     );
   } else {
-    return <img className={className} ref={ref} src={src} alt={alt} decoding="async" loading={loadingType} />;
+    return <img ref={ref} src={src} alt={alt} />;
   }
 };
 

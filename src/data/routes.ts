@@ -4,13 +4,13 @@ export type Route = {
 };
 
 export interface Routes {
-  readonly Landing: Route;
+  readonly Home: Route;
   readonly About: Route;
   readonly Contatti: Route;
 }
 
 const routes: Routes = {
-  Landing: {
+  Home: {
     path: '/',
     title: 'Home'
   },

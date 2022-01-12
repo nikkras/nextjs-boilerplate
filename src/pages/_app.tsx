@@ -57,9 +57,11 @@ function App({ Component, pageProps }: AppProps) {
     }
   }
 
-  return isUnsupported ? (
-    <Component {...componentProps} />
-  ) : (
+  if (isUnsupported) {
+    return <Component {...componentProps} />;
+  }
+
+  return (
     <Provider store={store}>
       <Layout>
         <LocomotiveScrollProvider

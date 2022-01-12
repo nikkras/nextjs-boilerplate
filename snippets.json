@@ -11,7 +11,7 @@
       "mqhd":"@include media('>=hd') {}",  
       "mqfullhd":"@include media('>=fullhd') {}",
       "mqxlarge":"@include media('>=xlarge') {}",
-      "px":"pxrem()"
+      "px":"px()"
     }
   },
   "jsx": {

@@ -1,6 +1,6 @@
 import { memo, useEffect, useCallback, PropsWithChildren, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { LazyMotion, domAnimation } from 'framer-motion';
-// import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import CookieConsent, { getCookieConsentValue } from 'react-cookie-consent';
 import Nav from '@/components/Nav/Nav';
@@ -10,6 +10,8 @@ import { setPrevRoute, setIsWebpSupported, useAppDispatch } from '@/redux';
 import { checkWebpSupport } from '@/utils/basic-functions';
 import { device } from '@jam3/detect';
 import { useAppSelector } from '@/redux';
+
+const AppAdmin = dynamic(() => import('@/components/AppAdmin/AppAdmin'), { ssr: false });
 
 export type Props = PropsWithChildren<{}>;
 
@@ -53,6 +55,8 @@ function Layout({ children }: Props) {
       >
         {activeLang === 'en' ? 'This website uses cookies' : 'Questo sito utilizza i cookies'}
       </CookieConsent>
+
+      {process.env.NEXT_PUBLIC_ENVIRONMENT !== 'production' && <AppAdmin />}
     </LazyMotion>
   );
 }

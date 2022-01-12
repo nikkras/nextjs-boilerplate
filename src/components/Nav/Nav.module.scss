@@ -10,7 +10,7 @@
   background-color: $white;
   @include z-index(header);
   @include flex-center-vert;
-  height: pxrem(100);
+  height: px(100);
 
   > .wrapper {
     display: flex;

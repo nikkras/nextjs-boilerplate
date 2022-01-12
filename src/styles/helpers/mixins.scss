@@ -1,4 +1,48 @@
 @use 'sass:math';
+// Use two pixel values to convert line-height into a unitless number
+// @example scss Input
+//   p {
+//     font-size: 16px;
+//     line-height: line-height(16, 30);
+//   }
+@function line-height($font-size, $line-height) {
+  @if $line-height==normal {
+    @return normal;
+  }
+  @return $line-height / $font-size;
+}
+
+// Use two pixel values to convert letter-spacing into an em value
+// @example scss Input
+//   p {
+//     font-size: 16px;
+//     // letter-spacing: -0.1px;
+//     letter-spacing: letter-spacing(16, -0.1);
+//   }
+@function letter-spacing($font-size, $letter-spacing) {
+  @if $letter-spacing==normal {
+    @return normal;
+  }
+  @return #{$letter-spacing / $font-size}em;
+}
+
+// Define font-size, line-height and letter-spacing in function
+// @example scss Input
+//   p {
+//     // font-size: 16px;
+//     // letter-spacing: -0.1px;
+//     // line-height: 1.5; // This is line-height 24px and font-size: 16px
+//     @include font-size(16, 24, -0.1)
+//   }
+@mixin font-size($font-size, $line-height: normal, $letter-spacing: normal) {
+  font-size: px($font-size);
+  line-height: line-height($font-size, $line-height);
+
+  @if $letter-spacing !=0 {
+    letter-spacing: letter-spacing($font-size, $letter-spacing);
+  }
+}
+
 /// Improve animation performance for containers
 /// @example scss Input
 ///   .card {
@@ -38,24 +82,6 @@
   @return $px * 0.1rem;
 }
 
-/// Convert the pixels to rem for in a specific resolution, usually 1440px wide
-/// @example scss Input
-///   section {
-///     height: pxrem(200);
-///   }
-$baseFontSize: 16;
-@function pxrem($pixels, $context: $baseFontSize) {
-  @if (unitless($pixels)) {
-    $pixels: $pixels * 1px;
-  }
-
-  @if (unitless($context)) {
-    $context: $context * 1px;
-  }
-
-  @return math.div($pixels, $context) * 1rem;
-}
-
 /// Set top and left to 0
 /// @example scss Input
 ///   element {
@@ -72,7 +98,7 @@ $baseFontSize: 16;
 ///   element {
 ///     @include pos100(absolute);
 ///   }
-@mixin pos100($pos: 'relative') {
+@mixin pos100($pos: relative) {
   position: $pos;
   @include pos0;
   @include box(100%);
@@ -149,6 +175,20 @@ $baseFontSize: 16;
   z-index: index($elements, $id);
 }
 
+/// Set breakpoint via media queries
+/// @example scss Input
+///   element {
+///     [...phone styles....]
+///     @include breakpoint(tablet) {
+///        [...tablet+desktop styles...]
+///     }
+///   }
+@mixin breakpoint($size) {
+  @media (min-width: #{map-get($layout, $size) + px}) {
+    @content;
+  }
+}
+
 /// Reset button's look
 /// @example scss Input
 ///   button {
@@ -174,8 +214,8 @@ $baseFontSize: 16;
 ///   @include fluid-type($min_font, $max_font, $min_width, $max_width);
 /// }
 
-$min-vw-default: map-get($layout-map, breakpoint-large);
-$max-vw-default: map-get($layout-map, breakpoint-hd);
+$min-vw-default: map-get($breakpoints, large);
+$max-vw-default: map-get($breakpoints, hd);
 
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);

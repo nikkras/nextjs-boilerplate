@@ -4,14 +4,14 @@
 :export {
   white: $white;
   black: $black;
-  xsmall: map-get($layout-map, breakpoint-xsmall);
-  small: map-get($layout-map, breakpoint-small);
-  msmall: map-get($layout-map, breakpoint-msmall);
-  medium: map-get($layout-map, breakpoint-medium);
-  large: map-get($layout-map, breakpoint-large);
-  slarge: map-get($layout-map, breakpoint-slarge);
-  mlarge: map-get($layout-map, breakpoint-mlarge);
-  hd: map-get($layout-map, breakpoint-hd);
-  fullhd: map-get($layout-map, breakpoint-fullhd);
-  xlarge: map-get($layout-map, breakpoint-xlarge);
+  xsmall: map-get($breakpoints, xsmall);
+  small: map-get($breakpoints, small);
+  msmall: map-get($breakpoints, msmall);
+  medium: map-get($breakpoints, medium);
+  large: map-get($breakpoints, large);
+  slarge: map-get($breakpoints, slarge);
+  mlarge: map-get($breakpoints, mlarge);
+  hd: map-get($breakpoints, hd);
+  fullhd: map-get($breakpoints, fullhd);
+  xlarge: map-get($breakpoints, xlarge);
 }

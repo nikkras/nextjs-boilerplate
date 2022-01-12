@@ -1,8 +1,9 @@
 import { memo } from 'react';
 import NextHead from 'next/head';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
-import { siteName, siteSlogan } from '../../data/settings';
+import { siteName, siteSlogan } from '@/data/settings';
 
 type Props = {
   title?: string;
@@ -11,6 +12,11 @@ type Props = {
 };
 
 const TITLE_SEPARATOR = '|';
+
+const FeaturePolicy = dynamic(() => import(/* webpackChunkName: "FeaturePolicy" */ './FeaturePolicy'));
+const ContentSecurityPolicy = dynamic(
+  () => import(/* webpackChunkName: "ContentSecurityPolicy" */ './ContentSecurityPolicy')
+);
 
 function Head({
   title,
@@ -49,13 +55,25 @@ function Head({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image" content={ogDefaultImage} />
-      <meta name="twitter:card" content="Default content" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta property="fb:app_id" content="FB_APP_ID" />
       <meta name="google-site-verification" content="[Google Web Master Tools]" />
       <meta name="msvalidate.01" content="[Bing Web Master Tools]" />
       {/* Other recommends */}
       <link rel="canonical" href={ogUrl} />
-      {process.env.NEXT_PUBLIC_DNS_PREFETCH && <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_DNS_PREFETCH} />}
+      {process.env.NEXT_PUBLIC_DNS_PREFETCH && (
+        <>
+          <link rel="preconnect" href={process.env.NEXT_PUBLIC_DNS_PREFETCH} crossOrigin="true" />
+          <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_DNS_PREFETCH} />
+        </>
+      )}
+
+      {process.env.NEXT_PUBLIC_ENVIRONMENT === 'local' && (
+        <>
+          <FeaturePolicy />
+          <ContentSecurityPolicy />
+        </>
+      )}
     </NextHead>
   );
 }
