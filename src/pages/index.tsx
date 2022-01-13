@@ -32,7 +32,7 @@ function Home({ className }: Props) {
         <h2 className="description">extended from jam3.</h2>
         {typeof window !== 'undefined' && large ? (
           <div className="image">
-            <Image src='test.jpg' alt='test' />
+            <Image src="test.jpg" alt="test" />
           </div>
         ) : null}
       </section>
@@ -53,7 +53,9 @@ function Home({ className }: Props) {
             padding-bottom: px(24);
             letter-spacing: -1px;
             line-height: 1.15;
-            font-size: px(48);
+            @include font-size(40, 40);
+            font-size: clamp(4rem, 0.517rem + 3.4014vw, 8rem);
+            @include font-fluid(40, 80, 1024, 2200);
           }
 
           > .title,
